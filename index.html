@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jiří Vicherek</title>
+  <meta name="description" content="Jiří Vicherek — Fenek PR. Komunikace, PR a marketing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf6f0;
+      --surface: #ffffff;
+      --text: #1f1a14;
+      --muted: #6b6157;
+      --line: #e8dfd3;
+      --accent: #d9772b;      /* barva pouštního fenka */
+      --accent-soft: #f6e3d1;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #16130f;
+        --surface: #1f1b16;
+        --text: #f3ece3;
+        --muted: #a89c8e;
+        --line: #352e26;
+        --accent: #f0954a;
+        --accent-soft: #3a2a1c;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #16130f;
+      --surface: #1f1b16;
+      --text: #f3ece3;
+      --muted: #a89c8e;
+      --line: #352e26;
+      --accent: #f0954a;
+      --accent-soft: #3a2a1c;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 400 17px/1.65 "Inter", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+    @media (max-width: 520px) { .wrap { padding: 0 16px; } }
+
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 28px 0;
+    }
+    nav .logo { font: 700 20px "Fraunces", serif; color: var(--text); text-decoration: none; }
+    nav .logo span { color: var(--accent); }
+    nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
+    nav a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 15px; }
+    nav a:hover { color: var(--accent); }
+    @media (max-width: 520px) { nav ul { gap: 14px; } nav a { font-size: 14px; } }
+
+    header.hero {
+      display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;
+      padding: 72px 0 96px;
+    }
+    @media (max-width: 720px) {
+      header.hero { grid-template-columns: 1fr; padding: 40px 0 64px; gap: 32px; }
+      .fox { order: -1; width: 120px !important; height: 120px !important; }
+    }
+    .eyebrow {
+      display: inline-block; padding: 4px 12px; border-radius: 999px;
+      background: var(--accent-soft); color: var(--accent);
+      font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+    }
+    h1 {
+      font: 700 clamp(44px, 8vw, 76px)/1.02 "Fraunces", serif;
+      letter-spacing: -0.02em; margin: 18px 0 20px;
+    }
+    .lead { font-size: 20px; color: var(--muted); max-width: 34ch; margin: 0 0 32px; }
+    .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-block; padding: 13px 22px; border-radius: 12px;
+      font-weight: 600; text-decoration: none; transition: transform .15s, background .15s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.primary { background: var(--accent); color: #fff; }
+    .btn.ghost { border: 1px solid var(--line); color: var(--text); }
+    .btn.ghost:hover { border-color: var(--accent); }
+
+    .fox { width: 220px; height: 220px; }
+
+    section { padding: 72px 0; border-top: 1px solid var(--line); }
+    h2 {
+      font: 700 34px/1.15 "Fraunces", serif; margin: 0 0 28px; letter-spacing: -0.01em;
+    }
+    .about { display: grid; grid-template-columns: 1fr 1.6fr; gap: 40px; }
+    @media (max-width: 720px) { .about { grid-template-columns: 1fr; gap: 0; } }
+    .about p { margin: 0 0 16px; }
+
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    @media (max-width: 720px) { .cards { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+      padding: 26px;
+    }
+    .card .num { font: 700 15px "Fraunces", serif; color: var(--accent); }
+    .card h3 { margin: 8px 0 8px; font-size: 19px; }
+    .card p { margin: 0; color: var(--muted); font-size: 15.5px; }
+
+    .contact {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+      padding: 44px; text-align: center;
+    }
+    @media (max-width: 520px) { .contact { padding: 28px 20px; } }
+    .contact p { color: var(--muted); margin: 0 0 24px; }
+    .mail {
+      font: 700 clamp(22px, 5vw, 34px) "Fraunces", serif; color: var(--text);
+      text-decoration: none; border-bottom: 3px solid var(--accent); word-break: break-all;
+    }
+    .mail:hover { color: var(--accent); }
+
+    footer { padding: 40px 0 56px; color: var(--muted); font-size: 14px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    #theme { background: none; border: 1px solid var(--line); color: var(--muted); border-radius: 8px; padding: 4px 10px; cursor: pointer; font: inherit; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#">Jiří<span>.</span></a>
+      <ul>
+        <li><a href="#o-mne">O mně</a></li>
+        <li><a href="#co-delam">Co dělám</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+
+    <header class="hero">
+      <div>
+        <span class="eyebrow">Fenek PR</span>
+        <h1>Jiří Vicherek</h1>
+        <p class="lead">Pomáhám firmám a značkám říct svůj příběh tak, aby ho lidé chtěli slyšet.</p>
+        <div class="btns">
+          <a class="btn primary" href="mailto:jirka@fenekpr.cz">Napište mi</a>
+          <a class="btn ghost" href="#co-delam">Co dělám</a>
+        </div>
+      </div>
+      <!-- Fenek (pouštní liška) jako maskot podle názvu Fenek PR -->
+      <svg class="fox" viewBox="0 0 200 200" role="img" aria-label="Ilustrace fenka">
+        <circle cx="100" cy="100" r="96" fill="var(--accent-soft)"/>
+        <path d="M44 34 L78 92 L52 104 Z" fill="var(--accent)"/>
+        <path d="M156 34 L122 92 L148 104 Z" fill="var(--accent)"/>
+        <path d="M52 46 L74 88 L58 96 Z" fill="var(--surface)" opacity=".7"/>
+        <path d="M148 46 L126 88 L142 96 Z" fill="var(--surface)" opacity=".7"/>
+        <path d="M50 100 Q100 66 150 100 Q140 150 100 166 Q60 150 50 100 Z" fill="var(--accent)"/>
+        <path d="M72 128 Q100 112 128 128 Q118 158 100 166 Q82 158 72 128 Z" fill="var(--surface)"/>
+        <circle cx="80" cy="114" r="6" fill="var(--text)"/>
+        <circle cx="120" cy="114" r="6" fill="var(--text)"/>
+        <ellipse cx="100" cy="150" rx="8" ry="6" fill="var(--text)"/>
+      </svg>
+    </header>
+
+    <section id="o-mne">
+      <div class="about">
+        <h2>O mně</h2>
+        <div>
+          <!-- TODO: doplňte vlastními slovy — kde jste začínal, kolik let v oboru, na co jste hrdý. -->
+          <p>Jsem Jirka a stojím za <strong>Fenek PR</strong>. Zabývám se komunikací, public relations a marketingem — od strategie až po konkrétní texty, kampaně a vztahy s médii.</p>
+          <p>Fenek je malá pouštní liška s obrovskýma ušima. Slyší i to, co ostatním uteče. Tak se snažím pracovat i já: nejdřív pozorně poslouchat, pak teprve mluvit.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="co-delam">
+      <h2>Co dělám</h2>
+      <!-- TODO: upravte služby podle toho, co skutečně nabízíte. -->
+      <div class="cards">
+        <div class="card">
+          <div class="num">01</div>
+          <h3>PR a média</h3>
+          <p>Tiskové zprávy, vztahy s novináři a péče o to, jak o vás veřejnost mluví.</p>
+        </div>
+        <div class="card">
+          <div class="num">02</div>
+          <h3>Obsah a kampaně</h3>
+          <p>Texty, sociální sítě a kampaně, které mají jasný cíl a měřitelný výsledek.</p>
+        </div>
+        <div class="card">
+          <div class="num">03</div>
+          <h3>Strategie komunikace</h3>
+          <p>Komu, co a kudy říct — aby značka působila jednotně a věrohodně.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="contact">
+        <h2>Pojďme to probrat</h2>
+        <p>Máte příběh, který potřebuje slyšet víc lidí? Ozvěte se.</p>
+        <a class="mail" href="mailto:jirka@fenekpr.cz">jirka@fenekpr.cz</a>
+      </div>
+    </section>
+
+    <footer>
+      <span>© <span id="y">2026</span> Jiří Vicherek · Fenek PR</span>
+      <button id="theme" type="button" aria-label="Přepnout světlý/tmavý režim">◐ Režim</button>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const root = document.documentElement;
+    try { const t = localStorage.getItem('theme'); if (t) root.dataset.theme = t; } catch (e) {}
+    document.getElementById('theme').addEventListener('click', () => {
+      const dark = root.dataset.theme
+        ? root.dataset.theme === 'dark'
+        : matchMedia('(prefers-color-scheme: dark)').matches;
+      root.dataset.theme = dark ? 'light' : 'dark';
+      try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+    });
+  </script>
+</body>
+</html>
